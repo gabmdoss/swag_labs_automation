@@ -14,13 +14,23 @@ end
 
 CONFIG = environment("features/support/config/#{ENV["CONFIG"]}")
 DATA = environment("features/support/data/#{ENV["CONFIG"]}")
+BROWSER = ENV["BROWSER"]
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome, timeout: 30)
- end
+case ENV["BROWSER"]
+when "firefox"
+  @driver = :selenium
+when "firefox_headless"
+  @driver = :selenium_headless
+when "chrome"
+  @driver = :selenium_chrome
+when "chrome_headless"
+  @driver = :selenium_chrome_headless
+else
+  raise "Escolha um perfil para @driver na configuração em cucumber.yml"
+end
 
 Capybara.configure do |config|
-  config.default_driver = :selenium 
+  config.default_driver = @driver
   config.default_max_wait_time = 30
   Capybara.page.driver.browser.manage.window.maximize
 end

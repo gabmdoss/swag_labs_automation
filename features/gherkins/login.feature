@@ -16,11 +16,11 @@ Funcionalidade: Login
         Então é direcionado para o catálogo de produtos
 
     @login_attempts
-    Cenário: Tentativa de login sem usuário
+    Cenário: Tentativa de login
         Quando inserir os dados de login
-            | username | <"username"> |
-            | password | <"password"> |
-            E clica no botão de login
+            | username | <username> |
+            | password | <password> |
+            E clicar no botão de login
         Então a página retorna a mensagem "<message>"
 
         Exemplos:

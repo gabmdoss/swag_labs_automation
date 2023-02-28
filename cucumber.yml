@@ -1,7 +1,13 @@
 ---
-default: --publish-quiet -p allure -p bdd -p prd 
+default: --publish-quiet -p allure -p bdd -p chrome -p prd 
 bdd: -f pretty
 dots: -f progress 
 html: -f html -o logs/reports.html
 allure: --format AllureCucumber::CucumberFormatter --out=logs
 prd: CONFIG=prd.yml
+hml: CONFIG=hml.yml
+dev: CONFIG=dev.yml
+firefox: BROWSER=firefox
+firefox_headless: BROWSER=fire_headless
+chrome: BROWSER=chrome
+chrome_headless: BROWSER=chrome_headless

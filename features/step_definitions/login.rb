@@ -3,8 +3,8 @@ Dado('que o cliente acessa a página de login da loja Swag Labs') do
 end
   
 Quando('inserir usuário e senha') do
-    @login.username(DATA["username"])
-    @login.password(DATA["password"])
+    @login.username("user")
+    @login.password("pwd")
 end
   
 Quando('clicar no botão de login') do
@@ -13,4 +13,14 @@ end
   
 Então('é direcionado para o catálogo de produtos') do
     @login.header_validation
+end
+
+Quando('inserir os dados de login') do |table|
+    login_params = table.rows_hash
+    @login.username(login_params[:username])
+    @login.password(login_params[:password])
+end
+  
+Então('a página retorna a mensagem {string}') do |message|
+    expect(@login.error_message).to eql (message)
 end
