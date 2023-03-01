@@ -12,7 +12,7 @@ Quando('clicar no botão de login') do
 end
   
 Então('é direcionado para o catálogo de produtos') do
-    @login.header_validation
+    expect(@login.header_validation).to be true
 end
 
 Quando('inserir os dados de login') do |table|
