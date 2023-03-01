@@ -1,12 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('version') {
-      steps {
-        sh 'ruby --version'
-      }
-    }
-    stage('preparing'){
+    stage('Dependencies'){
         steps{
             sh 'bundle install'
         }
