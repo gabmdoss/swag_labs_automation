@@ -13,7 +13,7 @@ pipeline {
     }
     stage('login') {
       steps {
-        sh 'login.rb'
+        sh 'cucumber'
       }
     }
   }
