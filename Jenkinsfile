@@ -6,6 +6,11 @@ pipeline {
         sh 'ruby --version'
       }
     }
+    stage('preparing'){
+        steps{
+            sh 'bundle install'
+        }
+    }
     stage('login') {
       steps {
         sh 'login.rb'
