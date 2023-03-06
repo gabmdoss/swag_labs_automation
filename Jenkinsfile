@@ -6,10 +6,15 @@ pipeline {
             sh 'bundle install'
         }
     }
-    stage('login') {
+    stage('Testing') {
       steps {
         sh 'cucumber'
       }
+    }
+  }
+  post {
+    always {
+      allure includeProperties: false, jdk: '', results: [[path: 'swag_labs_automation/logs']]
     }
   }
 }
